@@ -1,0 +1,35 @@
+.hero-image {
+  background-color: bisque;
+  background-image: url(../images/hero.jpeg);
+  height: 300px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.nav {
+   background-color: rgb(226, 226, 226);
+border: 1px solid rgb(145, 145, 145); 
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+  height: 30px;
+  width: auto;
+   margin: 0;
+padding:0 ;    
+display: flex;
+justify-content: left;
+}
+
+
+.nav a{
+
+padding: 5px;
+text-decoration: none;
+color: rgb(86, 86, 86);
+}
+
+.nav .active{
+    background-color: rgb(246, 144, 144);
+}
