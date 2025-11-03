@@ -1,6 +1,6 @@
 # PokeAPI
 
-By 
+
 Ash Pelletier
 
 Matthew Hurley
