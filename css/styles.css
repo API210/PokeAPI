@@ -33,3 +33,90 @@ color: rgb(86, 86, 86);
 .nav .active{
     background-color: rgb(246, 144, 144);
 }
+
+h1 {
+  text-align: center;
+  text-decoration: underline;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+h2 {
+  text-align: center;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+#notes-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 10px;
+  background: rgb(236, 236, 236);
+  border-radius: 8px;
+  min-height: 100px;
+}
+
+#input-area {
+  display: flex;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.note {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+#note-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  
+}
+
+#submit-button {
+  padding: 10px 15px;
+  background: rgba(123, 120, 122, 0.733);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.note span {
+  flex-grow: 1;
+}
+
+.note button {
+  margin-left: 5px;
+  border: none;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background: #8d7b7b;
+  color: #fff;
+}
+
+.delete-btn {
+  background: #776565;
+  color: white;
+}
+
+form {
+  text-align: center;
+}
+
+#contact {
+  text-align: center;
+}
