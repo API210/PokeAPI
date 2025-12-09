@@ -1,167 +1,122 @@
-// --- 2. INITIALIZE FIREBASE ---
-// The firebaseConfig object (not shown here) must be defined above this script.
-// It contains your Firebase project keys such as apiKey, databaseURL, etc.
-// This line initializes Firebase using that configuration.
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// -----------------------------
+//  FIREBASE v8 INITIALIZATION
+// -----------------------------
 const firebaseConfig = {
-  apiKey: "AIzaSyDQxETfI67in4wRXNKfpqf-fpglvUJmMjM",
-  authDomain: "notesapp-f31ba.firebaseapp.com",
-  databaseURL: "https://notesapp-f31ba-default-rtdb.firebaseio.com",
-  projectId: "notesapp-f31ba",
-  storageBucket: "notesapp-f31ba.firebasestorage.app",
-  messagingSenderId: "208358290960",
-  appId: "1:208358290960:web:82680959b55e1bfbf27c95",
-  measurementId: "G-EDP6Z0WC7L"
+  apiKey: "AIzaSyBlI12KBFoZgmc_asBDqL9czmsgJV4Ww-w",
+  authDomain: "pokeapi-91a4f.firebaseapp.com",
+  projectId: "pokeapi-91a4f",
+  storageBucket: "pokeapi-91a4f.firebasestorage.app",
+  messagingSenderId: "933068493418",
+  appId: "1:933068493418:web:66c83d045f1d75cb543013"
 };
+
+// Initialize Firebase (v8 style)
 firebase.initializeApp(firebaseConfig);
 
-// The firebase.database() method gives us access to the Realtime Database service.
+// Get database
 const database = firebase.database();
-
-// Here we create a reference (a pointer) to the 'notes' collection (or path) in our database.
-// Every note we add or modify will go under this "notes" node.
-const notesRef = database.ref('notes');
+const notesRef = database.ref("notes");
 
 
-// --- 3. GET ELEMENTS FROM THE PAGE ---
-// Get the container element from HTML where all notes will be displayed dynamically.
-const notesContainer = document.getElementById('notes-container');
-
-// Get the input box where the user types a new note.
-const noteInput = document.getElementById('note-input');
-
-// Get the submit button that will trigger adding a new note when clicked.
-const submitButton = document.getElementById('submit-button');
+// -----------------------------
+//  GET ELEMENTS
+// -----------------------------
+const notesContainer = document.getElementById("notes-container");
+const noteInput = document.getElementById("note-input");
+const submitButton = document.getElementById("submit-button");
 
 
-// --- 4. CREATE: WRITE DATA TO FIREBASE ---
-// Add an event listener to handle click actions on the "Submit" button.
-submitButton.addEventListener('click', () => {
- 
-  // Retrieve the text typed by the user in the input box.
+// -----------------------------
+//  ADD NOTE
+// -----------------------------
+submitButton.addEventListener("click", () => {
   const noteText = noteInput.value;
 
-  // If the user clicked "Submit" with an empty or whitespace-only input, do nothing.
-  if (noteText.trim() === '') return;
+  if (noteText.trim() === "") return;
 
-  // Push a new note object into the 'notes' path in the Realtime Database.
-  // Firebase automatically creates a unique key (ID) for each pushed item.
   notesRef.push({
-    text: noteText,          // The actual note text
-    timestamp: Date.now()    // Save the current time (milliseconds since 1970)
+    text: noteText,
+    timestamp: Date.now()
   });
 
-  // After adding the note to Firebase, clear the input box for the next note.
-  noteInput.value = '';
+  noteInput.value = "";
 });
 
-// Read Op
 
-notesRef.on('child_added',(snapshot) => {
-  // Step 1: Extract ID and object
+// -----------------------------
+//  READ NOTES
+// -----------------------------
+notesRef.on("child_added", (snapshot) => {
   const noteId = snapshot.key;
-  const newNote = snapshot.val();
+  const data = snapshot.val();
 
-  const notesElement = createNoteElement(noteId, newNote.text);
-
-  notesContainer.prepend(notesElement);
-
-})
+  const element = createNoteElement(noteId, data.text);
+  notesContainer.prepend(element);
+});
 
 
-function createNoteElement(noteId, noteText) {
- 
-  // Outer Box
-  const noteElement = document.createElement('div');
-  noteElement.classList.add('note');
-  noteElement.setAttribute('data-id', noteId);
+// -----------------------------
+//  CREATE NOTE DOM
+// -----------------------------
+function createNoteElement(noteId, text) {
+  const noteElement = document.createElement("div");
+  noteElement.classList.add("note");
+  noteElement.dataset.id = noteId;
 
-  //text
-  const noteTextElement = document.createElement('span');
-  noteTextElement.textContent = noteText;
-  noteElement.appendChild(noteTextElement);
-  // Delete Button
-  const deleteButton = document.createElement('button');
-  deleteButton.classList.add('delete-btn');
-  deleteButton.innerText = 'Delete';
-  deleteButton.addEventListener('click' ,() =>{
-    deleteNote(noteId);
-  });
-  noteElement.appendChild(deleteButton);
-   // Edit Button
-  const editButton = document.createElement('button');
-  editButton.classList.add('edit-btn');
-  editButton.innerText = 'Edit';
-  editButton.addEventListener('click', () => {
-    const currentText = noteElement.querySelector('span').innerText;
-    editNote(noteId,currentText);
-  });
-  noteElement.appendChild(editButton);
+  // text
+  const span = document.createElement("span");
+  span.textContent = text;
+  noteElement.appendChild(span);
 
- 
+  // delete
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.onclick = () => deleteNote(noteId);
+  noteElement.appendChild(deleteBtn);
 
-
-
-
- 
-
-
+  // edit
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "Edit";
+  editBtn.onclick = () => editNote(noteId, text);
+  noteElement.appendChild(editBtn);
 
   return noteElement;
-
 }
 
+
+// -----------------------------
+//  DELETE NOTE
+// -----------------------------
 function deleteNote(noteId) {
-  // Create a reference to the specific note to be deleted
-  const specificNoteRef = database.ref('notes/' + noteId);
-
-  // Remove the note from the database
-  specificNoteRef.remove();
+  database.ref("notes/" + noteId).remove();
 }
 
-notesRef.on('child_removed', (snapshot) => {
-
+notesRef.on("child_removed", (snapshot) => {
   const noteId = snapshot.key;
-
-  const noteElement = document.querySelector(`div[data-id="${noteId}"]`);
-
-  if(noteElement) {
-    noteElement.remove();}
-   
+  const element = document.querySelector(`[data-id="${noteId}"]`);
+  if (element) element.remove();
 });
 
 
+// -----------------------------
+//  EDIT NOTE
+// -----------------------------
+function editNote(noteId, currentText) {
+  const newText = prompt("Fix your typo:", currentText);
 
+  if (!newText || newText.trim() === "") return;
 
-function editNote (noteId,currentText){
-   // prompt is a built in tool that forces a small popup window to appear
-   // We gibes it two things
-   // 1] the Question : 'Fix your typo:'(this tells user what to do)
-   //2] the Default Answer :currentText (this puts therire old note in the box auto)
-  const newText = prompt('Fix your typo:' ,currentText);
-
-
-  if(newText && newText.trim() !==''){
-
-    const specificNoteRef = database.ref('notes/' +noteId);
-
-    specificNoteRef.update({
-      text : newText
-    });
-
-  }
-
+  database.ref("notes/" + noteId).update({
+    text: newText
+  });
 }
 
-
-notesRef.on('child_changed', (snapshot) =>{
-
+notesRef.on("child_changed", (snapshot) => {
   const noteId = snapshot.key;
-  const updatedNote = snapshot.val();
-  const noteElement = document.querySelector(`div[data-id="${noteId}"]`);
-  // if it exists locate the <span> inside and update its displayed text
-  if(noteElement){
-    noteElement.querySelector('span').innerText = updatedNote.text;
-  }
+  const newData = snapshot.val();
 
-})
+  const element = document.querySelector(`[data-id="${noteId}"]`);
+  if (element) {
+    element.querySelector("span").innerText = newData.text;
+  }
+});
