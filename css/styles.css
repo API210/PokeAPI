@@ -74,6 +74,14 @@ body {
 }
 
 /* ------------------------------
+   CONTENT PAGE
+---------------------------------*/
+#fetchBtn {
+  display: block;
+  margin: 0 auto;
+}
+
+/* ------------------------------
    NOTES CONTAINER
 --------------------------------*/
 #notes-container {
