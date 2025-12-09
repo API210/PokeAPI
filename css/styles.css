@@ -10,30 +10,33 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  border: 3px solid rgb(0, 0, 0);
+  margin-top: 20px;
 }
 
 /* ------------------------------
    NAVIGATION
 --------------------------------*/
 .nav {
-  background-color: rgb(226, 226, 226);
-  border: 1px solid rgb(145, 145, 145);
+  background-color: rgb(255, 128, 128);
+  border: 3px solid rgb(0, 0, 0);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   height: 30px;
   display: flex;
   padding: 0;
   margin: 0;
-  justify-content: left;
+  justify-content: space-evenly;
 }
 
 .nav a {
   padding: 5px;
-  color: rgb(86, 86, 86);
+  color: rgb(255, 255, 255);
   text-decoration: none;
+  
 }
 
 .nav .active {
-  background-color: rgb(246, 144, 144);
+  background-color: #FF0000;
 }
 
 /* ------------------------------
@@ -54,7 +57,7 @@ h1 {
 --------------------------------*/
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #f0f0f0;
+  background: #fababa;
 }
 
 /* ------------------------------
@@ -125,6 +128,17 @@ body {
   border-radius: 4px;
   margin-left: 10px;
   cursor: pointer;
+}
+
+/* ------------------------------
+   RC STYLING
+--------------------------------*/
+.RCstyle {
+  border: 3px solid black;
+  padding: 5px;
+  background-color: #ffffff;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 /* ------------------------------
