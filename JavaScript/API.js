@@ -3,7 +3,6 @@ const randPokeDiv = document.getElementById('randPoke');
 
 fetchBtn.addEventListener("click", () => {
     
-    // Generate a random Pokémon ID (1–898 covers all main Pokémon)
     const randomId = Math.floor(Math.random() * 898) + 1;
     const appUrl = `https://pokeapi.co/api/v2/pokemon/${randomId}`;
 
@@ -16,7 +15,6 @@ fetchBtn.addEventListener("click", () => {
         })
         .then(data => {
 
-            // Access correct fields from API
             const pokeName = data.name;
             const pokeAbil = data.abilities[0].ability.name;
             const pokeMove = data.moves[0].move.name;
