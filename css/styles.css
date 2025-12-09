@@ -58,6 +58,22 @@ body {
 }
 
 /* ------------------------------
+   INDEX PAGE
+---------------------------------*/
+.mPara {
+  text-align: center;
+}
+
+/* ------------------------------
+   FACTS PAGE
+---------------------------------*/
+.lCenter {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ------------------------------
    NOTES CONTAINER
 --------------------------------*/
 #notes-container {
