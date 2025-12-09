@@ -1,3 +1,6 @@
+/* ------------------------------
+   HERO SECTION
+--------------------------------*/
 .hero-image {
   background-color: bisque;
   background-image: url(../images/hero.jpeg);
@@ -9,60 +12,71 @@
   position: relative;
 }
 
+/* ------------------------------
+   NAVIGATION
+--------------------------------*/
 .nav {
-   background-color: rgb(226, 226, 226);
-border: 1px solid rgb(145, 145, 145); 
+  background-color: rgb(226, 226, 226);
+  border: 1px solid rgb(145, 145, 145);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-
   height: 30px;
-  width: auto;
-   margin: 0;
-padding:0 ;    
-display: flex;
-justify-content: left;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  justify-content: left;
 }
 
-
-.nav a{
-
-padding: 5px;
-text-decoration: none;
-color: rgb(86, 86, 86);
+.nav a {
+  padding: 5px;
+  color: rgb(86, 86, 86);
+  text-decoration: none;
 }
 
-.nav .active{
-    background-color: rgb(246, 144, 144);
+.nav .active {
+  background-color: rgb(246, 144, 144);
+}
+
+/* ------------------------------
+   HEADINGS
+--------------------------------*/
+h1,
+h2 {
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 h1 {
-  text-align: center;
   text-decoration: underline;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
-h2 {
-  text-align: center;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+/* ------------------------------
+   BODY
+--------------------------------*/
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f0f0f0;
+  padding: 20px;
 }
 
+/* ------------------------------
+   NOTES CONTAINER
+--------------------------------*/
 #notes-container {
   max-width: 600px;
   margin: 20px auto;
   padding: 10px;
-  background: rgb(236, 236, 236);
+  background: #fff;
   border-radius: 8px;
   min-height: 100px;
 }
 
-#input-area {
+/* ------------------------------
+   INPUT AREA
+--------------------------------*/
+.input-area {
   display: flex;
   max-width: 600px;
   margin: 20px auto;
-}
-
-.note {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
 }
 
 #note-input {
@@ -70,12 +84,11 @@ h2 {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  
 }
 
 #submit-button {
   padding: 10px 15px;
-  background: rgba(123, 120, 122, 0.733);
+  background: #00bcd4;
   color: white;
   border: none;
   border-radius: 4px;
@@ -83,113 +96,48 @@ h2 {
   cursor: pointer;
 }
 
+/* ------------------------------
+   NOTE STYLING
+--------------------------------*/
 .note {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
 }
 
 .note span {
   flex-grow: 1;
 }
 
-.note button {
+/* Buttons inside each note */
+.note button,
+.note-button {
   margin-left: 5px;
   border: none;
-  padding: 4px;
+  padding: 4px 6px;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.edit-btn {
-  background: #8d7b7b;
-  color: #fff;
-}
-
-.delete-btn {
-  background: #776565;
+/* Edit & Delete Buttons */
+.edit-btn,
+.edit-button {
+  background: orange;
   color: white;
 }
 
-form {
-  text-align: center;
+.delete-btn,
+.delete-button {
+  background: #ff4d4d;
+  color: white;
 }
 
+/* ------------------------------
+   CONTACT FORM
+--------------------------------*/
+form,
 #contact {
   text-align: center;
-}
-
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f0f0f0;
-    padding: 20px;
-}
-
-h1{
-    text-align: center;
-}
-
-#notes-container{
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 10px;
-    background: #fff; 
-    border-radius: 8px;
-    min-height: 100px;
-}
-
-
-.input-area{
-    display: flex;
-    max-width: 600px;
-    margin: 20px auto;
-}
-
-.note {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-#note-input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#submit-button{
-    padding: 10px 15px;
-    background: #00bcd4;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-.note span{
-    flex-grow: 1;
-}
-
-.note-button{
-    margin-left: 5px;
-    border: none;
-    padding: 4px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.edit-button{
-    background: orange;
-    color: white;
-}
-
-.delete-button{
-    background: #ff4d4d; 
-    color: white;
 }
