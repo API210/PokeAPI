@@ -80,6 +80,14 @@ body {
   display: block;
   margin: 0 auto;
 }
+.API {
+  text-align: center;
+}
+
+.apiImg {
+  display: block;
+  margin: 0 auto;
+}
 
 /* ------------------------------
    NOTES CONTAINER

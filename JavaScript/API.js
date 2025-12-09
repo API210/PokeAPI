@@ -21,14 +21,14 @@ fetchBtn.addEventListener("click", () => {
             const pokeImg = data.sprites.front_default;
 
             randPokeDiv.innerHTML = `
-                <p><strong>Pokémon Name:</strong> ${pokeName}</p>
-                <p><strong>Ability:</strong> ${pokeAbil}</p>
-                <p><strong>Move:</strong> ${pokeMove}</p>
-                <img src="${pokeImg}" alt="${pokeName}">
+                <p class="API"><strong>Pokémon Name:</strong> ${pokeName}</p>
+                <p class="API"><strong>Ability:</strong> ${pokeAbil}</p>
+                <p class="API"><strong>Move:</strong> ${pokeMove}</p>
+                <img class="apiImg" src="${pokeImg}" alt="${pokeName}">
             `;
         })
         .catch(error => {
             randPokeDiv.innerHTML = `
-                <p><strong>Error:</strong> ${error.message}</p>`;
+                <p class="API"><strong>Error:</strong> ${error.message}</p>`;
         });
 });
