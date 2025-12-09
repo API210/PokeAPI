@@ -20,15 +20,18 @@
 
     <h1>Home</h1>
     
-    <h2>Leave a comment!</h2>
+    <h1>Leave A Comment</h1>
 
-   
-    <div id="input-area">
-    <input class="text" id="note-input" placeholder="Write a new name or note"></input>
-    <button id="submit-button" >Add comment...</button>
+    <div id="notes-container"></div>
+    <div class ="input-area">
+        <input type="text" id="note-input" placeholder="Write a new name/notes">
+        <button id="submit-button">Add Note</button>
     </div>
+   
 
-     <div id="notes-container"></div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="Firebase.js"></script>
 
   </body>
 </html>
